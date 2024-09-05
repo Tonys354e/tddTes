@@ -21,11 +21,12 @@ private $name,$content,$attributes;
         if (! empty($this->attributes)){
 
             $htmlAttributes='';
+
             foreach($this->attributes as $name => $value){
                 $htmlAttributes .= $name.'="'.$value.'"';
             }
 
-            $result ='<'.$this->name.'>';
+            $result ='<'.$this->name.' '.$htmlAttributes.   '>';
         }else {
             $result ='<'.$this->name.'>';
         }
