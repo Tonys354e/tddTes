@@ -1,25 +1,13 @@
-<?php
-use App\HtmlElement;
+    <?php  
 
-require '../vendor/autoload.php';
-//creamos una nueva instancia de HtmlElement
+    require '../vendor/autoload.php';  
 
-//* 1. ejemplo simple párrafo
-$element = new HtmlElement('p',[], 'Contenido');
-echo $element->open().'Chicharrones'.$element->close();
+    use App\HtmlElement;  
 
-echo $element->render();
+    $element = new HtmlElement('p',[],'este es el contemido');  
 
+    echo htmlentities( $element->render(), ENT_QUOTES, 'UTF-8');
 
+    $element = new HtmlElement('p',['id'=>'my_paragraph'],'este es el contemido');  
 
-//* 2. ejemplo con elementos de HTML
-$element = new HtmlElement('p',['id'=>'párrafo'], 'Contenido');
-echo $element->render();
-
-//* 3. ejemplo sin etiqueta para cerrar como img
-$element = new HtmlElement('img',['src'=>'../public/img/dog.jpg','height'=>200],);
-echo $element->render();
-
-//* 4. ejemplo etiquetas de entrada
-$element = new HtmlElement('input',['required'],);
-echo $element->render();
+    echo htmlentities( $element->render(), ENT_QUOTES, 'UTF-8');
