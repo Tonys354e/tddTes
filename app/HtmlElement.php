@@ -22,18 +22,29 @@ private $name,$content,$attributes;
 
             $htmlAttributes='';
 
-            foreach($this->attributes as $name => $value){
-                $htmlAttributes .= $name.'="'.$value.'"';
+            foreach($this->attributes as $attributes => $value){
+
+                if(is_numeric($attributes)){
+                    $htmlAttributes .=' '.$value;
+                } else{
+                    $htmlAttributes .= ' '. $attributes.'="'.htmlentities($value,ENT_QUOTES, 'UTF-8').'"';
+                }
+
             }
 
-            $result ='<'.$this->name.' '.$htmlAttributes.   '>';
+            $result ='<'.$this->name.$htmlAttributes.   '>';
         }else {
             $result ='<'.$this->name.'>';
         }
        
-       
+       if (in_array($this->name,['br','hr','img','input','meta']) ){
+        return $result;
+       }
 
-        $result.= $this->content;
+
+
+
+        $result.= htmlentities($this->content,ENT_QUOTES, 'UTF-8');
      
 
         $result .= '</'.$this->name.'>';

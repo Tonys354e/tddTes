@@ -13,6 +13,7 @@
             "name": "antony"
         }
     ],
-    "require": {}
-    
+    "require-dev": {
+        "phpunit/phpunit": "^11.3"
+    }
 }
